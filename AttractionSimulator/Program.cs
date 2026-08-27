@@ -3,10 +3,11 @@
 Console.WriteLine("Attraction Simulator Starting...");
 
 Attraction attraction = new Attraction("CodeCoaster", 6, false);
+RideVehicle rideVehicle = new RideVehicle(1, 24, 0);
 
 while (true)
 {
-    Console.Write("Enter a command (status, start, stop, or exit): ");
+    Console.Write("Enter a command (Status, Start, Stop, Exit, Restraints, Check, Dispatch): ");
     string? command = Console.ReadLine()?.Trim().ToLower();
 
     if (command == "status")
@@ -27,6 +28,25 @@ while (true)
     {
         Console.WriteLine("Exiting...");
         break;
+    }
+    else if (attraction.IsOperating)
+    {
+        if (command == "restraints")
+        {
+            rideVehicle.ToggleRestraints();
+        }
+        if (command == "check")
+        {
+            rideVehicle.CheckRestraints();
+        }
+        if (command == "dispatch")
+        {
+            rideVehicle.Dispatch();
+        }
+    }
+    else if (!attraction.IsOperating && (command == "restraints" || command == "check" || command == "dispatch"))
+    {
+        Console.WriteLine("Attraction must be started first");
     }
     else
     {
