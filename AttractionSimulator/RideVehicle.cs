@@ -33,7 +33,7 @@
             {
                 PassengerCount = PassengerCount + number;
 
-                Console.WriteLine($"Loaded! There are now {PassengerCount} on this train!");
+                Console.WriteLine($"Loaded! There are now {PassengerCount}  people on this train!");
             }
         }
 
@@ -75,6 +75,23 @@
             else
             {
                 Console.WriteLine("Cannot dispatch! Restraints not engaged or not checked!");
+            }
+        }
+
+        public void LoadPassengers()
+        {
+            if (!RestraintsEngaged)
+            {
+                Console.Write("How many people are loading? ");
+                
+                if (int.TryParse(Console.ReadLine(), out int partySize))
+                {
+                    LoadPassengers(partySize);
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid number.");
+                }
             }
         }
         
