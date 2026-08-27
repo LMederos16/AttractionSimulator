@@ -47,8 +47,15 @@
 
         public void CheckRestraints()
         {
-            RestraintCheck = true;
-            Console.WriteLine("Restraints are checked!");
+            if (RestraintsEngaged)
+            {
+                Console.WriteLine("Checking restraints!");
+                RestraintCheck = true;
+            }
+            else
+            {
+                Console.WriteLine("Restraints must be engaged!");
+            }
         }
 
         public void Dispatch()
