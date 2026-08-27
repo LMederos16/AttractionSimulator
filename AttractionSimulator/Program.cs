@@ -33,7 +33,7 @@ while (true)
     {
         if (command == "vehicle status")
         {
-            rideVehicle.Status();
+            rideVehicle.DisplayStatus();
         }
         else if (command == "load")
         {

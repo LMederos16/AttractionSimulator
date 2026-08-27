@@ -15,11 +15,11 @@
             PassengerCount = passengerCount;
         }
 
-        public void Status()
+        public void DisplayStatus()
         {
             Console.WriteLine($"Vehicle Number: {VehicleId}\n" +
                 $"Vehicle Capacity: {Capacity}\n" +
-                $"Passangers On Vechile: {PassengerCount}\n" +
+                $"Passengers On Vechile: {PassengerCount}\n" +
                 $"Restraints Engaged: {RestraintsEngaged}\n" +
                 $"Restraint Checked: {RestraintCheck}");
         }
@@ -37,7 +37,7 @@
             {
                 PassengerCount = PassengerCount + number;
 
-                Console.WriteLine($"Loaded! There are now {PassengerCount}  people on this train!");
+                Console.WriteLine($"Loaded! There are now {PassengerCount}  passengers on this train!");
             }
         }
 
@@ -86,7 +86,7 @@
         {
             if (!RestraintsEngaged)
             {
-                Console.Write("How many people are loading? ");
+                Console.Write("How many passengers are loading? ");
                 
                 if (int.TryParse(Console.ReadLine(), out int partySize))
                 {
