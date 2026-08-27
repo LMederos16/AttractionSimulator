@@ -29,6 +29,10 @@
             {
                 Console.WriteLine("This party is too big to load. Please wait for the next train.");
             }
+            else if (number < 0)
+            {
+                Console.WriteLine("Number cannot be negative!");
+            }
             else
             {
                 PassengerCount = PassengerCount + number;
@@ -92,6 +96,10 @@
                 {
                     Console.WriteLine("Please enter a valid number.");
                 }
+            }
+            else
+            {
+                Console.WriteLine("The restraints are still engaged! Cannot load!");
             }
         }
         
