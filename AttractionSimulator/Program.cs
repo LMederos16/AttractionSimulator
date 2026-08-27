@@ -35,11 +35,11 @@ while (true)
         {
             rideVehicle.ToggleRestraints();
         }
-        if (command == "check")
+        else if (command == "check")
         {
             rideVehicle.CheckRestraints();
         }
-        if (command == "dispatch")
+        else if (command == "dispatch")
         {
             rideVehicle.Dispatch();
         }
