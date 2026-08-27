@@ -19,7 +19,7 @@
         {
             Console.WriteLine($"Vehicle Number: {VehicleId}\n" +
                 $"Vehicle Capacity: {Capacity}\n" +
-                $"Passengers On Vechile: {PassengerCount}\n" +
+                $"Passengers On Vehicle: {PassengerCount}\n" +
                 $"Restraints Engaged: {RestraintsEngaged}\n" +
                 $"Restraint Checked: {RestraintCheck}");
         }
@@ -31,7 +31,7 @@
             }
             else if (number <= 0)
             {
-                Console.WriteLine("Number cannot be negative!");
+                Console.WriteLine("Number must be greater than 0!");
             }
             else
             {
