@@ -15,6 +15,14 @@
             PassengerCount = passengerCount;
         }
 
+        public void Status()
+        {
+            Console.WriteLine($"Vehicle Number: {VehicleId}\n" +
+                $"Vehicle Capacity: {Capacity}\n" +
+                $"Passangers On Vechile: {PassengerCount}\n" +
+                $"Restraints Engaged: {RestraintsEngaged}\n" +
+                $"Restraint Checked: {RestraintCheck}");
+        }
         public void LoadPassengers(int number)
         {
             if (PassengerCount + number > Capacity)
@@ -49,8 +57,8 @@
         {
             if (RestraintsEngaged)
             {
-                Console.WriteLine("Checking restraints!");
                 RestraintCheck = true;
+                Console.WriteLine("Checking restraints!");
             }
             else
             {
@@ -67,6 +75,19 @@
             else
             {
                 Console.WriteLine("Cannot dispatch! Restraints not engaged or not checked!");
+            }
+        }
+        
+        public void UnloadPassengers()
+        {
+            if (!RestraintsEngaged)
+            {
+                PassengerCount = 0;
+                Console.WriteLine("Unloading Passengers.");
+            }
+            else
+            {
+                Console.WriteLine("You need to disengage the restraints!");
             }
         }
     }

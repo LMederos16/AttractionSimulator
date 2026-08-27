@@ -3,14 +3,14 @@
 Console.WriteLine("Attraction Simulator Starting...");
 
 Attraction attraction = new Attraction("CodeCoaster", 6, false);
-RideVehicle rideVehicle = new RideVehicle(1, 24, 0);
+RideVehicle rideVehicle = new RideVehicle(1, 24, 12);
 
 while (true)
 {
-    Console.Write("Enter a command (Status, Start, Stop, Exit, Restraints, Check, Dispatch): ");
+    Console.Write("Enter a command (Ride status, Start, Stop, Exit, Vehicle status, Restraints, Check, Dispatch, Unload): ");
     string? command = Console.ReadLine()?.Trim().ToLower();
 
-    if (command == "status")
+    if (command == "ride status")
     {
         attraction.DisplayStatus();
     }
@@ -29,9 +29,13 @@ while (true)
         Console.WriteLine("Exiting...");
         break;
     }
-    else if (attraction.IsOperating && (command == "restraints" || command == "check" || command == "dispatch"))
+    else if (attraction.IsOperating && (command == "vehicle status" || command == "restraints" || command == "check" || command == "dispatch" || command == "unload"))
     {
-        if (command == "restraints")
+        if (command == "vehicle status")
+        {
+            rideVehicle.Status();
+        }
+        else if (command == "restraints")
         {
             rideVehicle.ToggleRestraints();
         }
@@ -43,8 +47,12 @@ while (true)
         {
             rideVehicle.Dispatch();
         }
+        else if (command == "unload")
+        {
+            rideVehicle.UnloadPassengers();
+        }
     }
-    else if (!attraction.IsOperating && (command == "restraints" || command == "check" || command == "dispatch"))
+    else if (!attraction.IsOperating && (command == "vehicle status" || command == "restraints" || command == "check" || command == "dispatch" || command == "unload"))
     {
         Console.WriteLine("Attraction must be started first");
     }
