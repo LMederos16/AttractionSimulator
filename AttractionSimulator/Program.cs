@@ -29,7 +29,7 @@ while (true)
         Console.WriteLine("Exiting...");
         break;
     }
-    else if (attraction.IsOperating)
+    else if (attraction.IsOperating && (command == "restraints" || command == "check" || command == "dispatch"))
     {
         if (command == "restraints")
         {
