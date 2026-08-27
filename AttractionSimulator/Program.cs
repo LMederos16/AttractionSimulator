@@ -8,7 +8,7 @@ while (true)
 {
     // Command right now only notices "status", "start", "stop", and "exit" all lowercase for now
     Console.Write("Enter a command (status, start, stop, or exit): ");
-    string? command = Console.ReadLine();
+    string? command = Console.ReadLine()?.Trim().ToLower();
 
     if (command == "status")
     {
