@@ -1,31 +1,30 @@
-﻿Console.WriteLine("Attraction Simulator Starting...");
+﻿using AttractionSimulator;
 
-string rideName = "CodeCoaster";
-int vehicleCapacity = 16;
-bool isOperating = true;
+Console.WriteLine("Attraction Simulator Starting...");
+
+Attraction attraction = new Attraction("CodeCoaster", 16, false);
 
 while (true)
 {
-    // Command right now only notices "status", "start", "stop", and "exit" all lowercase for now
     Console.Write("Enter a command (status, start, stop, or exit): ");
     string? command = Console.ReadLine()?.Trim().ToLower();
 
     if (command == "status")
     {
         Console.WriteLine("Showing attraction status");
-        Console.WriteLine($"Attraction Name: {rideName}");
-        Console.WriteLine($"Vehicle Capacity: {vehicleCapacity}");
-        Console.WriteLine($"Currently Operating: {isOperating}");
+        Console.WriteLine($"Attraction Name: {attraction.Name}");
+        Console.WriteLine($"Vehicle Capacity: {attraction.VehicleCapacity}");
+        Console.WriteLine($"Currently Operating: {attraction.IsOperating}");
     }
     else if (command == "start")
     {
         Console.WriteLine("Attraction Started");
-        isOperating = true;
+        attraction.IsOperating = true;
     }
     else if (command == "stop")
     {
         Console.WriteLine("Attraction Stopped");
-        isOperating = false;
+        attraction.IsOperating = false;
     }
     else if (command == "exit")
     {
