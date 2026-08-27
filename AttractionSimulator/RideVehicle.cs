@@ -5,16 +5,16 @@
         public int VehichleId { get; set; }
         public int Capacity { get; set; }
         public int PassengerCount { get; set; }
-        public bool RestraintsEngaged { get; set; }
+        public bool RestraintsEngaged { get; private set; }
 
-        public RideVehicle(int vehicleId, int capacity, int passangerCount)
+        public RideVehicle(int vehicleId, int capacity, int passengerCount)
         {
             VehichleId = vehicleId;
             Capacity = capacity;
-            PassengerCount = passangerCount;
+            PassengerCount = passengerCount;
         }
 
-        public void LoadPassangers(int number)
+        public void LoadPassengers(int number)
         {
             if (PassengerCount + number > Capacity)
             {
@@ -25,6 +25,20 @@
                 PassengerCount = PassengerCount + number;
 
                 Console.WriteLine($"Loaded! There are now {PassengerCount} on this train!");
+            }
+        }
+
+        public void ToggleRestraints()
+        {
+            RestraintsEngaged = RestraintsEngaged!;
+
+            if (RestraintsEngaged)
+            {
+                Console.WriteLine("The restraints are engaged!");
+            }
+            else
+            {
+                Console.WriteLine("The restraints are disengaged!");
             }
         }
     }
