@@ -29,7 +29,7 @@
             {
                 Console.WriteLine("This party is too big to load. Please wait for the next train.");
             }
-            else if (number < 0)
+            else if (number <= 0)
             {
                 Console.WriteLine("Number cannot be negative!");
             }
