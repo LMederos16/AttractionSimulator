@@ -19,12 +19,12 @@ while (true)
     else if (command == "start")
     {
         Console.WriteLine("Attraction Started");
-        attraction.IsOperating = true;
+        attraction.Start();
     }
     else if (command == "stop")
     {
         Console.WriteLine("Attraction Stopped");
-        attraction.IsOperating = false;
+        attraction.Stop();
     }
     else if (command == "exit")
     {
