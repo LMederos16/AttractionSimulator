@@ -6,6 +6,7 @@
         public int Capacity { get; set; }
         public int PassengerCount { get; set; }
         public bool RestraintsEngaged { get; private set; }
+        public bool RestraintCheck { get; private set; }
 
         public RideVehicle(int vehicleId, int capacity, int passengerCount)
         {
@@ -38,7 +39,27 @@
             }
             else
             {
+                // Restraints must be checked again once disengaged.
+                RestraintCheck = false;
                 Console.WriteLine("The restraints are disengaged!");
+            }
+        }
+
+        public void CheckRestraints()
+        {
+            RestraintCheck = true;
+            Console.WriteLine("Restraints are checked!");
+        }
+
+        public void Dispatch()
+        {
+            if(RestraintsEngaged && RestraintCheck)
+            {
+                Console.WriteLine("Dispatching!");
+            }
+            else
+            {
+                Console.WriteLine("Cannot dispatch! Restraints not engaged or not checked!");
             }
         }
     }
