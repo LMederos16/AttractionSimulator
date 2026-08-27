@@ -11,10 +11,7 @@ while (true)
 
     if (command == "status")
     {
-        Console.WriteLine("Showing attraction status");
-        Console.WriteLine($"Attraction Name: {attraction.Name}");
-        Console.WriteLine($"Vehicle Capacity: {attraction.VehicleCapacity}");
-        Console.WriteLine($"Currently Operating: {attraction.IsOperating}");
+        attraction.Status();
     }
     else if (command == "start")
     {

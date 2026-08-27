@@ -1,9 +1,4 @@
-﻿using AttractionSimulator;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AttractionSimulator
+﻿namespace AttractionSimulator
 {
     internal class Attraction
     {
@@ -16,6 +11,13 @@ namespace AttractionSimulator
             Name = name;
             VehicleCapacity = vehicleCapacity;
             IsOperating = isOperating;
+        }
+        public void Status()
+        {
+            Console.WriteLine("Showing attraction status");
+            Console.WriteLine($"Attraction Name: {Name}");
+            Console.WriteLine($"Vehicle Capacity: {VehicleCapacity}");
+            Console.WriteLine($"Currently Operating: {IsOperating}");
         }
         public void Start()
         {
