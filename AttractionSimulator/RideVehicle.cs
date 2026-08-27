@@ -2,14 +2,14 @@
 {
     internal class RideVehicle
     {
-        public int VehichleId { get; set; }
+        public int VehicleId { get; set; }
         public int Capacity { get; set; }
         public int PassengerCount { get; set; }
         public bool RestraintsEngaged { get; private set; }
 
         public RideVehicle(int vehicleId, int capacity, int passengerCount)
         {
-            VehichleId = vehicleId;
+            VehicleId = vehicleId;
             Capacity = capacity;
             PassengerCount = passengerCount;
         }
@@ -30,7 +30,7 @@
 
         public void ToggleRestraints()
         {
-            RestraintsEngaged = RestraintsEngaged!;
+            RestraintsEngaged = !RestraintsEngaged;
 
             if (RestraintsEngaged)
             {
