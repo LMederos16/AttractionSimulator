@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AttractionSimulator
+﻿namespace AttractionSimulator
 {
     internal class RideVehicle
     {
-        int VehichleId { get; set; }
-        int Capacity { get; set; }
-        int PassangerCount { get; set; }
+        public int VehichleId { get; set; }
+        public int Capacity { get; set; }
+        public int PassangerCount { get; set; }
 
         public RideVehicle(int vehicleId, int capacity, int passangerCount)
         {
