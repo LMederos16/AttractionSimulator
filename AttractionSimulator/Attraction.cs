@@ -12,7 +12,7 @@
             VehicleCapacity = vehicleCapacity;
             IsOperating = isOperating;
         }
-        public void Status()
+        public void DisplayStatus()
         {
             Console.WriteLine("Showing attraction status");
             Console.WriteLine($"Attraction Name: {Name}");

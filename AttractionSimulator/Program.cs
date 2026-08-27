@@ -11,7 +11,7 @@ while (true)
 
     if (command == "status")
     {
-        attraction.Status();
+        attraction.DisplayStatus();
     }
     else if (command == "start")
     {
