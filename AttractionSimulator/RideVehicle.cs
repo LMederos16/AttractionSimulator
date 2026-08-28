@@ -29,6 +29,7 @@
         public void DisplayStatus()
         {
             Console.WriteLine($"Vehicle Number: {VehicleId}\n" +
+                $"Vehicle State : {State}" +
                 $"Vehicle Capacity: {Capacity}\n" +
                 $"Passengers On Vehicle: {PassengerCount}\n" +
                 $"Restraints Engaged: {RestraintsEngaged}\n" +
@@ -46,6 +47,7 @@
             }
             else
             {
+                State = VehicleState.Loading;
                 PassengerCount = PassengerCount + number;
 
                 Console.WriteLine($"Loaded! There are now {PassengerCount}  passengers on this train!");
@@ -54,76 +56,131 @@
 
         public void LoadPassengers()
         {
-            if (!RestraintsEngaged)
+            if (State == VehicleState.Empty || State == VehicleState.Loading)
             {
-                Console.Write("How many passengers are loading? ");
-
-                if (int.TryParse(Console.ReadLine(), out int partySize))
+                if (!RestraintsEngaged)
                 {
-                    LoadPassengers(partySize);
+                    Console.Write("How many passengers are loading? ");
+
+                    if (int.TryParse(Console.ReadLine(), out int partySize))
+                    {
+                        LoadPassengers(partySize);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please enter a valid number.");
+                    }
                 }
                 else
                 {
-                    Console.WriteLine("Please enter a valid number.");
+                    Console.WriteLine("The restraints are still engaged! Cannot load!");
                 }
             }
             else
             {
-                Console.WriteLine("The restraints are still engaged! Cannot load!");
+                Console.WriteLine("Vehicle must be empty or loading!");
             }
         }
 
         public void ToggleRestraints()
         {
-            RestraintsEngaged = !RestraintsEngaged;
-
-            if (RestraintsEngaged)
+            if (State == VehicleState.Loading || State == VehicleState.SafetyChecks)
             {
-                Console.WriteLine("The restraints are engaged!");
+                if (!RestraintsEngaged)
+                {
+                    RestraintsEngaged = true;
+                    Console.WriteLine("The restraints are engaged!");
+                    State = VehicleState.SafetyChecks;
+                }
+                else
+                {
+                    // Restraints must be checked again once disengaged.
+                    RestraintsEngaged = false;
+                    RestraintCheck = false;
+                    Console.WriteLine("The restraints are disengaged!");
+                    State = VehicleState.Loading;
+                }
             }
             else
             {
-                // Restraints must be checked again once disengaged.
-                RestraintCheck = false;
-                Console.WriteLine("The restraints are disengaged!");
+                Console.WriteLine("Restraints can only be changed while loading or performing safety checks!");
             }
         }
 
         public void CheckRestraints()
         {
-            if (RestraintsEngaged)
+            if (State == VehicleState.SafetyChecks)
             {
-                RestraintCheck = true;
-                Console.WriteLine("Checking restraints!");
+                if (RestraintsEngaged)
+                {
+                    RestraintCheck = true;
+                    Console.WriteLine("Restraint check passed!");
+                    State = VehicleState.Ready;
+                }
+                else
+                {
+                    Console.WriteLine("Restraints must be engaged!");
+                }
             }
             else
             {
-                Console.WriteLine("Restraints must be engaged!");
+                Console.WriteLine("Vehicle must be in the saftey check phase!");
             }
         }
 
         public void Dispatch()
         {
-            if(RestraintsEngaged && RestraintCheck)
+            if (State == VehicleState.Ready)
             {
-                Console.WriteLine("Dispatching!");
+                if (RestraintsEngaged && RestraintCheck)
+                {
+                    Console.WriteLine("Dispatching!");
+                    State = VehicleState.Dispatched;
+                }
+                else
+                {
+                    Console.WriteLine("Cannot dispatch! Restraints not engaged or not checked!");
+                }
             }
             else
             {
-                Console.WriteLine("Cannot dispatch! Restraints not engaged or not checked!");
+                Console.WriteLine("Vehicle must be ready for dispatch!");
+            }
+        }
+
+        public void ReturnToStation()
+        {
+            if (State == VehicleState.Dispatched)
+            {
+                RestraintsEngaged = false;
+                RestraintCheck = false;
+                Console.WriteLine("Vehicle has returned to station.");
+                State = VehicleState.Unloading;
+            }
+            else
+            {
+                Console.WriteLine("Vehicle must be dispatched!");
             }
         }
         
         public void UnloadPassengers()
         {
-            if (!RestraintsEngaged)
+            if (State == VehicleState.Unloading)
             {
-                PassengerCount = 0;
-                Console.WriteLine("Unloading Passengers.");
+                if (!RestraintsEngaged)
+                {
+                    PassengerCount = 0;
+                    Console.WriteLine("Unloading Passengers.");
+                    State = VehicleState.Empty;
+                }
+                else
+                {
+                    Console.WriteLine("You need to disengage the restraints!");
+                }
             }
             else
             {
-                Console.WriteLine("You need to disengage the restraints!");
+                Console.WriteLine("Vehicle must be in unloading phase");
             }
         }
     }
