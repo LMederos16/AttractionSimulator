@@ -7,7 +7,7 @@ RideVehicle rideVehicle = new RideVehicle(1, 24, 0);
 
 while (true)
 {
-    Console.Write("Enter a command (Ride status, Start, Stop, Exit, Vehicle status, Load, Restraints, Check, Dispatch, Unload): ");
+    Console.Write("Enter a command (Ride status, Start, Stop, Exit, Vehicle status, Load, Restraints, Check, Dispatch, Return, Unload): ");
     string? command = Console.ReadLine()?.Trim().ToLower();
 
     if (command == "ride status")

@@ -41,7 +41,7 @@
             {
                 if (RestraintsEngaged)
                 {
-                    Console.WriteLine("Restraints still engaged! Cannnot load!");
+                    Console.WriteLine("Restraints still engaged! Cannot load!");
                 }
                 else if (PassengerCount + number > Capacity)
                 {
