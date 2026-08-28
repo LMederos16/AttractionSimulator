@@ -1,5 +1,14 @@
 ﻿namespace AttractionSimulator
 {
+    enum VehicleState
+    {
+        Empty,
+        Loading,
+        SafteyChecks,
+        Ready,
+        Dispatched,
+        Unloading
+    }
     internal class RideVehicle
     {
         public int VehicleId { get; set; }
@@ -7,6 +16,7 @@
         public int PassengerCount { get; set; }
         public bool RestraintsEngaged { get; private set; }
         public bool RestraintCheck { get; private set; }
+        public VehicleState State { get; set; }
 
         public RideVehicle(int vehicleId, int capacity, int passengerCount)
         {
@@ -38,6 +48,27 @@
                 PassengerCount = PassengerCount + number;
 
                 Console.WriteLine($"Loaded! There are now {PassengerCount}  passengers on this train!");
+            }
+        }
+
+        public void LoadPassengers()
+        {
+            if (!RestraintsEngaged)
+            {
+                Console.Write("How many passengers are loading? ");
+
+                if (int.TryParse(Console.ReadLine(), out int partySize))
+                {
+                    LoadPassengers(partySize);
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid number.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("The restraints are still engaged! Cannot load!");
             }
         }
 
@@ -79,27 +110,6 @@
             else
             {
                 Console.WriteLine("Cannot dispatch! Restraints not engaged or not checked!");
-            }
-        }
-
-        public void LoadPassengers()
-        {
-            if (!RestraintsEngaged)
-            {
-                Console.Write("How many passengers are loading? ");
-                
-                if (int.TryParse(Console.ReadLine(), out int partySize))
-                {
-                    LoadPassengers(partySize);
-                }
-                else
-                {
-                    Console.WriteLine("Please enter a valid number.");
-                }
-            }
-            else
-            {
-                Console.WriteLine("The restraints are still engaged! Cannot load!");
             }
         }
         
