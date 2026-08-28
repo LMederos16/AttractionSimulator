@@ -4,7 +4,7 @@
     {
         Empty,
         Loading,
-        SafteyChecks,
+        SafetyChecks,
         Ready,
         Dispatched,
         Unloading
@@ -16,13 +16,14 @@
         public int PassengerCount { get; set; }
         public bool RestraintsEngaged { get; private set; }
         public bool RestraintCheck { get; private set; }
-        public VehicleState State { get; set; }
+        public VehicleState State { get; private set; }
 
         public RideVehicle(int vehicleId, int capacity, int passengerCount)
         {
             VehicleId = vehicleId;
             Capacity = capacity;
             PassengerCount = passengerCount;
+            State = VehicleState.Empty;
         }
 
         public void DisplayStatus()
