@@ -37,7 +37,16 @@ while (true)
         }
         else if (command == "load")
         {
-            rideVehicle.LoadPassengers();
+            Console.Write("How many passengers are loading? ");
+
+            if (int.TryParse(Console.ReadLine(), out int partySize))
+            {
+                rideVehicle.LoadPassengers(partySize);
+            }
+            else
+            {
+                Console.WriteLine("Please enter a valid number.");
+            }
         }
         else if (command == "restraints")
         {

@@ -37,48 +37,31 @@
         }
         public void LoadPassengers(int number)
         {
-            if (PassengerCount + number > Capacity)
-            {
-                Console.WriteLine("This party is too big to load. Please wait for the next train.");
-            }
-            else if (number <= 0)
-            {
-                Console.WriteLine("Number must be greater than 0!");
-            }
-            else
-            {
-                State = VehicleState.Loading;
-                PassengerCount = PassengerCount + number;
-
-                Console.WriteLine($"Loaded! There are now {PassengerCount}  passengers on this train!");
-            }
-        }
-
-        public void LoadPassengers()
-        {
             if (State == VehicleState.Empty || State == VehicleState.Loading)
             {
-                if (!RestraintsEngaged)
+                if (RestraintsEngaged)
                 {
-                    Console.Write("How many passengers are loading? ");
-
-                    if (int.TryParse(Console.ReadLine(), out int partySize))
-                    {
-                        LoadPassengers(partySize);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Please enter a valid number.");
-                    }
+                    Console.WriteLine("Restraints still engaged! Cannnot load!");
+                }
+                else if (PassengerCount + number > Capacity)
+                {
+                    Console.WriteLine("This party is too big to load. Please wait for the next train.");
+                }
+                else if (number <= 0)
+                {
+                    Console.WriteLine("Number must be greater than 0!");
                 }
                 else
                 {
-                    Console.WriteLine("The restraints are still engaged! Cannot load!");
+                    State = VehicleState.Loading;
+                    PassengerCount = PassengerCount + number;
+
+                    Console.WriteLine($"Loaded! There are now {PassengerCount}  passengers on this train!");
                 }
             }
             else
             {
-                Console.WriteLine("Vehicle must be empty or loading!");
+                Console.WriteLine("Vehicle must be empty or loading");
             }
         }
 
