@@ -11,18 +11,18 @@
     }
     internal class RideVehicle
     {
-        public int VehicleId { get; set; }
-        public int Capacity { get; set; }
-        public int PassengerCount { get; set; }
+        public int VehicleId { get; }
+        public int Capacity { get; }
+        public int PassengerCount { get; private set; }
         public bool RestraintsEngaged { get; private set; }
         public bool RestraintCheck { get; private set; }
         public VehicleState State { get; private set; }
 
-        public RideVehicle(int vehicleId, int capacity, int passengerCount)
+        public RideVehicle(int vehicleId)
         {
             VehicleId = vehicleId;
-            Capacity = capacity;
-            PassengerCount = passengerCount;
+            Capacity = 24;
+            PassengerCount = 0;
             State = VehicleState.Empty;
         }
 

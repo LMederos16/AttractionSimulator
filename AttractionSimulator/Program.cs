@@ -3,7 +3,7 @@
 Console.WriteLine("Attraction Simulator Starting...");
 
 Attraction attraction = new Attraction("CodeCoaster", 6, false);
-RideVehicle rideVehicle = new RideVehicle(1, 24, 0);
+RideVehicle rideVehicle = new RideVehicle(1);
 
 while (true)
 {
