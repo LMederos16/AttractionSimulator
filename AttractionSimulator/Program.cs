@@ -29,7 +29,7 @@ while (true)
         Console.WriteLine("Exiting...");
         break;
     }
-    else if (attraction.IsOperating && (command == "vehicle status" || command == "load" || command == "restraints" || command == "check" || command == "dispatch" || command == "unload"))
+    else if (attraction.IsOperating && (command == "vehicle status" || command == "load" || command == "restraints" || command == "check" || command == "dispatch" || command == "unload" || command == "return"))
     {
         if (command == "vehicle status")
         {
@@ -55,8 +55,12 @@ while (true)
         {
             rideVehicle.UnloadPassengers();
         }
+        else if(command == "return")
+        {
+            rideVehicle.ReturnToStation();
+        }
     }
-    else if (!attraction.IsOperating && (command == "vehicle status" || command == "load"|| command == "restraints" || command == "check" || command == "dispatch" || command == "unload"))
+    else if (!attraction.IsOperating && (command == "vehicle status" || command == "load"|| command == "restraints" || command == "check" || command == "dispatch" || command == "unload" || command == "return"))
     {
         Console.WriteLine("Attraction must be started first");
     }

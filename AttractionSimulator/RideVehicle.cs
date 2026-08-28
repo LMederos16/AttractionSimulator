@@ -29,7 +29,7 @@
         public void DisplayStatus()
         {
             Console.WriteLine($"Vehicle Number: {VehicleId}\n" +
-                $"Vehicle State : {State}" +
+                $"Vehicle State : {State}\n" +
                 $"Vehicle Capacity: {Capacity}\n" +
                 $"Passengers On Vehicle: {PassengerCount}\n" +
                 $"Restraints Engaged: {RestraintsEngaged}\n" +
@@ -124,7 +124,7 @@
             }
             else
             {
-                Console.WriteLine("Vehicle must be in the saftey check phase!");
+                Console.WriteLine("Vehicle must be in the safety check phase!");
             }
         }
 
