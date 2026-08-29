@@ -2,15 +2,15 @@
 {
     internal class Attraction
     {
-        public string Name { get; set; }
-        public int VehicleCapacity { get; set; }
+        public string Name { get; }
+        public int VehicleCapacity { get; }
         public bool IsOperating { get; private set; }
 
-        public Attraction(string name, int vehicleCapacity, bool isOperating)
+        public Attraction(string name, int vehicleCapacity)
         {
             Name = name;
             VehicleCapacity = vehicleCapacity;
-            IsOperating = isOperating;
+            IsOperating = false;
         }
         public void DisplayStatus()
         {
