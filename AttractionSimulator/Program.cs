@@ -2,8 +2,8 @@
 
 Console.WriteLine("Attraction Simulator Starting...");
 
-Attraction attraction = new Attraction("CodeCoaster", 6);
-RideVehicle rideVehicle = new RideVehicle(1);
+Attraction attraction = new Attraction("CodeCoaster");
+
 
 while (true)
 {
@@ -31,9 +31,13 @@ while (true)
     }
     else if (attraction.IsOperating && (command == "vehicle status" || command == "load" || command == "restraints" || command == "check" || command == "dispatch" || command == "unload" || command == "return"))
     {
+        Console.WriteLine("Which vehicle would you like to work on");
+        int.TryParse(Console.ReadLine(), out int num);
+        RideVehicle? vehicle = attraction.GetVehicle(num);
+        
         if (command == "vehicle status")
         {
-            rideVehicle.DisplayStatus();
+            vehicle.DisplayStatus();
         }
         else if (command == "load")
         {
@@ -41,7 +45,7 @@ while (true)
 
             if (int.TryParse(Console.ReadLine(), out int partySize))
             {
-                rideVehicle.LoadPassengers(partySize);
+                vehicle.LoadPassengers(partySize);
             }
             else
             {
@@ -50,23 +54,23 @@ while (true)
         }
         else if (command == "restraints")
         {
-            rideVehicle.ToggleRestraints();
+            vehicle.ToggleRestraints();
         }
         else if (command == "check")
         {
-            rideVehicle.CheckRestraints();
+            vehicle.CheckRestraints();
         }
         else if (command == "dispatch")
         {
-            rideVehicle.Dispatch();
+            vehicle.Dispatch();
         }
         else if (command == "unload")
         {
-            rideVehicle.UnloadPassengers();
+            vehicle.UnloadPassengers();
         }
         else if(command == "return")
         {
-            rideVehicle.ReturnToStation();
+            vehicle.ReturnToStation();
         }
     }
     else if (!attraction.IsOperating && (command == "vehicle status" || command == "load"|| command == "restraints" || command == "check" || command == "dispatch" || command == "unload" || command == "return"))

@@ -25,6 +25,18 @@
             Console.WriteLine($"Vehicle Capacity: {MaxVehicles}");
             Console.WriteLine($"Currently Operating: {IsOperating}");
         }
+        public RideVehicle? GetVehicle(int vehicleId)
+        {
+            foreach (RideVehicle vehicle in Vehicles)
+            {
+                if (vehicle.VehicleId == vehicleId)
+                {
+                    return vehicle;
+                }
+            }
+
+            return null;
+        }
         public void Start()
         {
             IsOperating = true;
