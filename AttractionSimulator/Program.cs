@@ -7,6 +7,9 @@ Attraction attraction = new Attraction("CodeCoaster");
 
 while (true)
 {
+    // Asks user what command they want
+    // Ride status, Start, Stop, Exit are attraction Commands
+    // Vehicle status, load, retraints, check, dispatch, unload, and return are RideVehicle commands. (Attraction must be started)
     Console.Write("Enter a command (Ride status, Start, Stop, Exit, Vehicle status, Load, Restraints, Check, Dispatch, Return, Unload): ");
     string? command = Console.ReadLine()?.Trim().ToLower();
 
@@ -29,11 +32,31 @@ while (true)
         Console.WriteLine("Exiting...");
         break;
     }
-    else if (attraction.IsOperating && (command == "vehicle status" || command == "load" || command == "restraints" || command == "check" || command == "dispatch" || command == "unload" || command == "return"))
+    // RideVehicle commands
+    else if (attraction.IsOperating && (command == "vehicle status" 
+                                     || command == "load" 
+                                     || command == "restraints" 
+                                     || command == "check" 
+                                     || command == "dispatch" 
+                                     || command == "unload" 
+                                     || command == "return"))
     {
-        Console.WriteLine("Which vehicle would you like to work on");
-        int.TryParse(Console.ReadLine(), out int num);
+        
+        if (!int.TryParse(Console.ReadLine(), out int num))
+        {
+            Console.WriteLine("Please enter a valid vehicle number!");
+            Console.WriteLine();
+            continue;
+        }
+
         RideVehicle? vehicle = attraction.GetVehicle(num);
+
+        if (vehicle == null)
+        {
+            Console.WriteLine("Vehicle is not currently on track!");
+            Console.WriteLine();
+            continue;
+        }
         
         if (command == "vehicle status")
         {
