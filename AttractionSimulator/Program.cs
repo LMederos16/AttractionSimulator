@@ -41,6 +41,7 @@ while (true)
                                      || command == "unload" 
                                      || command == "return"))
     {
+        Console.Write("Which vehicle would you like to work on? ");
         
         if (!int.TryParse(Console.ReadLine(), out int num))
         {
