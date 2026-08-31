@@ -50,6 +50,11 @@ while (true)
             continue;
         }
 
+        if(num < 1 || num > attraction.MaxVehicles)
+        {
+            Console.WriteLine("Invalid vehicle number!");
+        }
+
         RideVehicle? vehicle = attraction.GetVehicle(num);
 
         if (vehicle == null)
